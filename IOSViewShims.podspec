@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "IOS View Shims"
+  s.name         = "IOSViewShims"
   s.version      = "0.0.1"
   s.summary      = "Abstracts some methods for showing alerts, confirmations, and menus."
 
