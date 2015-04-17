@@ -1,16 +1,14 @@
 //
 //  ViewShims.m
-//  larolp
 //
 //  Created by Nathan Cooper on 2015-04-15.
-//  Copyright (c) 2015 LDWF. All rights reserved.
 //
 
-#import "ViewShims.h"
+#import "NACViewShims.h"
 #import "AlertActionCallbackDelegate.h"
 #import "UIAlertView+MKBlocKAdditions.h"
 
-@implementation ViewShims
+@implementation NACViewShims
 
 //ACTION SHIMS
 
@@ -32,7 +30,7 @@
     }
     else {
         //Old < 8.0 Style.
-        AlertActionCallbackDelegate *delegate = [[AlertActionCallbackDelegate alloc] initWithCallback:callback];
+        NACAlertActionCallbackDelegate *delegate = [[NACAlertActionCallbackDelegate alloc] initWithCallback:callback];
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Account Options" delegate:delegate cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
         for (NSString *title in optionTitles){
             [actionSheet addButtonWithTitle:title];
