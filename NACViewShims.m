@@ -41,7 +41,7 @@
 
 //CONFIRM SHIM
 
-+ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction {
++ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction withCancellationAction:(void(^)()) cancellationAction {
     if ([UIAlertController class]){
         //New >= 8.0 Style.
         UIAlertController *dialog = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -50,7 +50,7 @@
         }];
         [dialog addAction:confirm];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:cancelText style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            
+            cancellationAction();
         }];
         [dialog addAction: cancel];
         [controller presentViewController:dialog animated:YES completion:nil];
@@ -59,8 +59,16 @@
         //Old < 8.0 Style.
         [UIAlertView alertViewWithTitle:title message: message cancelButtonTitle:cancelText otherButtonTitles:@[confirmText] onDismiss:^(int buttonIndex) {
             confirmAction();
-        } onCancel:^{ /*Do Nothing*/ }];
+        } onCancel:^{
+        	cancellationAction();
+        }];
     }
+}
+
++ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction {
+    [NACViewShims showConfirmationWithTitle:title withMessage:message fromController:controller withConfirmText:confirmText withCancelText:cancelText withConfirmationAction: confirmAction withCancellationAction:^{
+    	//Do nothing
+    }];
 }
 
 //MESSAGES SHIM
