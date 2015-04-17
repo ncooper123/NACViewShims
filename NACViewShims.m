@@ -5,7 +5,7 @@
 //
 
 #import "NACViewShims.h"
-#import "AlertActionCallbackDelegate.h"
+#import "NACAlertActionCallbackDelegate.h"
 #import "UIAlertView+MKBlocKAdditions.h"
 
 @implementation NACViewShims
@@ -80,11 +80,11 @@
 }
 
 + (void) showAlertForErrors:(NSArray *)errors fromViewController:(UIViewController *)controller {
-    [ViewShims showHelperWithTitle:@"Error" withMessage:[errors count] <= 1 ? errors[0] : [ViewShims alertViewMessageForErrorList:errors] fromController:controller];
+    [NACViewShims showHelperWithTitle:@"Error" withMessage:[errors count] <= 1 ? errors[0] : [NACViewShims alertViewMessageForErrorList:errors] fromController:controller];
 }
 
 + (void) showAlertForSuccesses:(NSArray *)messages fromViewController:(UIViewController *)controller {
-    [ViewShims showHelperWithTitle:@"Success" withMessage:[messages count] <= 1 ? messages[0] : [ViewShims alertViewMessageForErrorList:messages] fromController:controller];
+    [NACViewShims showHelperWithTitle:@"Success" withMessage:[messages count] <= 1 ? messages[0] : [NACViewShims alertViewMessageForErrorList:messages] fromController:controller];
 }
 
 + (NSString*) alertViewMessageForErrorList:(NSArray *) errors {
