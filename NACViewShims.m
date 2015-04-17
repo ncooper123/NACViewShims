@@ -66,7 +66,7 @@
 }
 
 + (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction {
-    [NACViewShims showConfirmationWithTitle:title withMessage:message fromController:controller withConfirmText:confirmText withCancelText:cancelText withConfirmationAction: confirmAction withCancellationAction:^{
+    [NACViewShims showConfirmationWithTitle:title withMessage:message fromController:controller withConfirmText:confirmText withCancelText:cancelText withConfirmAction: confirmAction withCancellationAction:^{
     	//Do nothing
     }];
 }
