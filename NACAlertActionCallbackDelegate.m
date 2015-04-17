@@ -6,7 +6,7 @@
 
 #import "NACAlertActionCallbackDelegate.h"
 
-typedef void (^AlertCallback)(int);
+typedef void (^NACAlertCallback)(int);
 
 @interface NACAlertActionCallbackDelegate ()
 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NACViewShims"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Abstracts some methods for showing alerts, confirmations, and menus."
 
   s.description  = <<-DESC
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.author = { "Nathan" => "ncooper@uno.edu" }
   s.platform = :ios
   s.requires_arc = true
-  s.source = { :git => "https://github.com/ncooper123/NACViewShims.git", :branch => "master", :tag => '0.0.2' }
+  s.source = { :git => "https://github.com/ncooper123/NACViewShims.git", :branch => "master", :tag => '0.0.3' }
   s.source_files = "*.{h,m}"
 
 end
