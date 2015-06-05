@@ -6,10 +6,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "NACAlertActionCallbackDelegate.h"
 
 @interface NACViewShims : NSObject
 
-+ (void) showActionViewWithTitle:(NSString*)title fromController:(UIViewController*) controller withOptionTitles:(NSArray *) optionTitles withCallback:(void(^)(int)) callback;
++ (void) showActionViewWithTitle:(NSString*)title withDelegate:(NACAlertActionCallbackDelegate*)delegate withOptionTitles:(NSArray *) optionTitles;
 + (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction withCancellationAction:(void(^)()) cancellationAction;
 + (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction;
 + (void) showAlertForSuccesses:(NSArray *)errors fromViewController:(UIViewController*)controller;

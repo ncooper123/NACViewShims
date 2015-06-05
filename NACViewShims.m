@@ -12,30 +12,30 @@
 
 //ACTION SHIMS
 
-+ (void) showActionViewWithTitle:(NSString*)title fromController:(UIViewController*) controller withOptionTitles:(NSArray *) optionTitles withCallback:(void(^)(int)) callback {
++ (void) showActionViewWithTitle:(NSString*)title withDelegate:(NACAlertActionCallbackDelegate*)delegate withOptionTitles:(NSArray *) optionTitles {
     if ([UIAlertController class]){
         //New >= 8.0 Style.
         UIAlertController *dialog = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
         int i = 0;
         for (NSString *title in optionTitles){
             UIAlertAction *action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                callback(i);
+                delegate.callback(i);
             }];
             [dialog addAction: action];
             i++;
         }
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {}];
         [dialog addAction: cancel];
-        [controller presentViewController:dialog animated:YES completion:nil];
+        [delegate.controller presentViewController:dialog animated:YES completion:nil];
     }
     else {
         //Old < 8.0 Style.
-        NACAlertActionCallbackDelegate *delegate = [[NACAlertActionCallbackDelegate alloc] initWithCallback:callback];
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Account Options" delegate:delegate cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Account Options" delegate:delegate cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
         for (NSString *title in optionTitles){
             [actionSheet addButtonWithTitle:title];
         }
-        [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+        [actionSheet addButtonWithTitle:@"Cancel"];
+        [actionSheet showInView:delegate.controller.view];
     }
 }
 

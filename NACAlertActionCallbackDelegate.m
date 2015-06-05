@@ -6,18 +6,11 @@
 
 #import "NACAlertActionCallbackDelegate.h"
 
-typedef void (^NACAlertCallback)(int);
-
-@interface NACAlertActionCallbackDelegate ()
-
-@property(readwrite,copy) NACAlertCallback callback;
-
-@end
-
 @implementation NACAlertActionCallbackDelegate
 
-- (id) initWithCallback:(void(^)(int)) callback {
+- (id) initWithCallback:(void(^)(int)) callback withController:(UIViewController*)controller{
     if (self = [super init]){
+        self.controller = controller;
         self.callback = callback;
     }
     return self;
