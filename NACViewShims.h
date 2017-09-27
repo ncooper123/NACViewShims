@@ -11,8 +11,8 @@
 @interface NACViewShims : NSObject
 
 + (void) showActionViewWithTitle:(NSString*)title withDelegate:(NACAlertActionCallbackDelegate*)delegate withOptionTitles:(NSArray *) optionTitles;
-+ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction withCancellationAction:(void(^)()) cancellationAction;
-+ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction;
++ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)(void))confirmAction withCancellationAction:(void(^)(void)) cancellationAction;
++ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)(void))confirmAction;
 + (void) showAlertForSuccesses:(NSArray *)errors fromViewController:(UIViewController*)controller;
 + (void) showAlertForErrors:(NSArray *)errors fromViewController:(UIViewController *)controller;
 

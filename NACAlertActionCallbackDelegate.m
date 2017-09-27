@@ -17,7 +17,7 @@
 }
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    self.callback(buttonIndex);
+    self.callback((int)buttonIndex);
 }
 
 @end

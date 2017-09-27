@@ -41,7 +41,7 @@
 
 //CONFIRM SHIM
 
-+ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction withCancellationAction:(void(^)()) cancellationAction {
++ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)(void))confirmAction withCancellationAction:(void(^)(void)) cancellationAction {
     if ([UIAlertController class]){
         //New >= 8.0 Style.
         UIAlertController *dialog = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -65,7 +65,7 @@
     }
 }
 
-+ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)())confirmAction {
++ (void) showConfirmationWithTitle:(NSString*)title withMessage:(NSString*) message fromController:(UIViewController*) controller withConfirmText:(NSString*)confirmText withCancelText:(NSString *)cancelText withConfirmAction:(void (^)(void))confirmAction {
     [NACViewShims showConfirmationWithTitle:title withMessage:message fromController:controller withConfirmText:confirmText withCancelText:cancelText withConfirmAction: confirmAction withCancellationAction:^{
     	//Do nothing
     }];
